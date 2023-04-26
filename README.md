@@ -6,12 +6,12 @@ The output data objects represent files and folders, each one has a unique "id",
 - Build the UI the way you think is best, using any libraries/icons/etc.
 
 ## Structure
-components - UI components
-models - the logic of converting an array to a tree, tree search, sorting
-providers - here to fetch files
-pages -  root page
-styles - global styles
-types - reusable types
+- components - UI components
+- models - the logic of converting an array to a tree, tree search, sorting
+- providers - here to fetch files
+- pages -  root page
+- styles - global styles
+- types - reusable types
 
 ## Solution
 - Server side data fetching runs in the Root Page in src/pages/index.tsx
