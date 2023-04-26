@@ -8,7 +8,7 @@ The output data objects represent files and folders, each one has a unique "id",
 ## Structure
 - components - UI components
 - models - the logic of converting an array to a tree, tree search, sorting
-- providers - here to fetch files
+- providers - API connection
 - pages -  root page
 - styles - global styles
 - types - reusable types
