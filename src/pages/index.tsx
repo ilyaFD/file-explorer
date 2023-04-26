@@ -4,16 +4,12 @@ import { Files, Timer } from '../components'
 import { listToTree, findNode, sortNode } from '../models'
 import { TFIleType } from '@/types'
 
-export async function getServerSideProps() {
-  const res = await getFiles()
-  if (res.error) {
-    return res.error
-  }
-  const tree = listToTree(res.data)
-  return { props: { tree } }
-}
 
-export default function Home({tree}: any) {
+function Home({error, tree}: any) {
+  if (error) {
+    return <>{error}</>
+  }
+  
   const [activeNodeID, setActiveNodeID] = React.useState('')
   const [parentID, setParentID] = React.useState('')
   const [items, setItems] = React.useState(tree.children)
@@ -45,3 +41,11 @@ export default function Home({tree}: any) {
     </main>
   )
 }
+
+
+Home.getInitialProps = async () => {
+  const res = await getFiles()
+  const tree = listToTree(res.data)
+  return { tree, error: res.error } 
+}
+export default Home
