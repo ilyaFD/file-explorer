@@ -19,19 +19,3 @@ export const getFiles = async () => {
     }
   }
 }
-
-export const getTest = async () => {
-  try {
-    const res = await fetch('/api/hello',)
-    const data = await res.json()
-    return {
-      data: data,
-      error: ''
-    }
-  } catch(error) {
-    return {
-      data: null,
-      error: error
-    }
-  }
-}

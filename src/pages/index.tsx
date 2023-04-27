@@ -1,15 +1,12 @@
 import React from 'react'
-import { getFiles, getTest } from '../providers'
+import { getFiles } from '../providers'
 import { Files, Timer } from '../components'
 import { listToTree, findNode, findSortedNodeItems } from '../models'
 import { TFIleType } from '@/types'
 
 
-function Home(props: any) {
+function Home({tree, error}: any) {
   const [activeNodeID, setActiveNodeID] = React.useState('')
-  const [tree, setTree] = React.useState(props.tree)
-  const [error, setError] = React.useState(props.error)
-  const [loading, setLoading] = React.useState(false)
   const items = React.useMemo(() => findSortedNodeItems(tree, activeNodeID), [activeNodeID]);
   
   const navHandler = (type: TFIleType, id?: string) => {
@@ -20,19 +17,8 @@ function Home(props: any) {
     }
   }
 
-  const onExpire = async (): Promise<void> => {
-    setLoading(true)
-    setActiveNodeID('')
-    const res = await getTest()
-    console.log(res)
-    // const res = await getFiles()
-    // if (res.error) {
-    //   setError(res.error)
-    // } else {
-    //   const tree = listToTree(res.data)
-    //   setTree(tree)
-    // }
-    // setLoading(false)
+  const onExpire = (): void => {
+    window.location.reload();
   }
 
   return (
@@ -44,13 +30,12 @@ function Home(props: any) {
           <>
             <Timer
               onExpire={onExpire}
-              duration={10}
+              duration={180}
             />
             <Files
               items={items}
               navHandler={navHandler}
               isRoot={!!activeNodeID}
-              loading={loading}
             />
           </>
       } 
