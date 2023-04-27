@@ -46,4 +46,9 @@ export const sortNode = (items: INode[]): INode[] => [
   ...items.filter(item => item.type === 'folder'),
   ...items.filter(item => item.type === 'file')
 ]
+ 
+export const findSortedNodeItems = (tree: INode, activeNodeID: string): INode[] | [] => {
+  const node = findNode(tree, activeNodeID)
+  return node?.children.length ? sortNode(node.children) : []
+}
   

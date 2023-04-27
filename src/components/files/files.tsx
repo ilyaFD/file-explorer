@@ -5,10 +5,13 @@ interface IFilesProps {
   items: INode[]
   navHandler: (type: TFIleType, id?: string) => void
   isRoot: boolean
+  loading?: boolean
 }
 
-export default function Files({items, navHandler, isRoot}: IFilesProps): JSX.Element {
-
+export default function Files({items, navHandler, isRoot, loading = false}: IFilesProps): JSX.Element {
+  if (loading) {
+    return <>Loading</>
+  }
   return (
     <ul className="border border-slate-200 rounded-lg w-full overflow-hidden max-w-lg">
       {isRoot ?

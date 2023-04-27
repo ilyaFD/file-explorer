@@ -1,2 +1,2 @@
-import  {listToTree, findNode, sortNode}  from './nodes'
-export {listToTree, findNode, sortNode}
+import  {listToTree, findNode, sortNode, findSortedNodeItems}  from './nodes'
+export {listToTree, findNode, sortNode, findSortedNodeItems}
