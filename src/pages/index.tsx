@@ -1,5 +1,5 @@
 import React from 'react'
-import { getFiles } from '../providers'
+import { getFiles, getTest } from '../providers'
 import { Files, Timer } from '../components'
 import { listToTree, findNode, findSortedNodeItems } from '../models'
 import { TFIleType } from '@/types'
@@ -23,14 +23,16 @@ function Home(props: any) {
   const onExpire = async (): Promise<void> => {
     setLoading(true)
     setActiveNodeID('')
-    const res = await getFiles()
-    if (res.error) {
-      setError(res.error)
-    } else {
-      const tree = listToTree(res.data)
-      setTree(tree)
-    }
-    setLoading(false)
+    const res = await getTest()
+    console.log(res)
+    // const res = await getFiles()
+    // if (res.error) {
+    //   setError(res.error)
+    // } else {
+    //   const tree = listToTree(res.data)
+    //   setTree(tree)
+    // }
+    // setLoading(false)
   }
 
   return (

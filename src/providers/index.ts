@@ -1,2 +1,2 @@
-import { getFiles } from './files'
-export { getFiles }
+import { getFiles, getTest } from './files'
+export { getFiles, getTest }
